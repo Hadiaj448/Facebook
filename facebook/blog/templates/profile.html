@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<br>
+
+ <div class= "w3-center" >
+     <div class="w3-center">
+      <h4 class="w3-center">My Profile</h4>
+         <p class="w3-center"><img src="{{url_for('static',filename='profile/'+current_user.image)}}" class="w3-circle" style="height:106px;width:106px" alt="Avatar"></p>
+         <hr>
+         <h3>{{current_user.username}}</h3>
+         <p>{{current_user.email}}</p>
+         <a href="/account" ><button class=" w3-button w3-center w3-purple" style="margin-left: 10px">Edit Account</button></a>
+        </div>
+      </div>
+
+{% endblock %}

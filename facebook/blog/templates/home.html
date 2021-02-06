@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+
+
+      
+      
+     
+  <div class="w3-content">
+    {% for post in posts.items %}    
+      <div class="w3-container w3-card w3-white w3-round w3-margin "style="width: 100%"><br>
+        <img src="{{url_for('static',filename='profile/'+post.author.image)}}" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+        <span class="w3-right w3-opacity">{{post.date.strftime('%Y-%m-%d')}}</span>
+        <a href="{{url_for('post',post_id=post.id)}}"><h3>{{post.author.username}}</h3></a><br>
+        <hr class="w3-clear">
+        <h3>{{post.title}}</h3>
+        <img src="{{url_for('static',filename='profile/'+post.image1)}}" style="width:100%" class="w3-margin-bottom">
+        <p>{{post.content}}</p>
+      </div> 
+      {% endfor %}
+</div>
+    
+<div class="w3-center">
+{% for page_num in posts.iter_pages(left_edge=1,right_edge=1,left_current=1,right_current=2) %}
+{% if page_num %}
+{% if posts.page==page_num %}
+<a class="btn btn-primary mb-4" href="{{url_for('home',page=page_num)}}">{{page_num}}</a>
+{% else %}
+<a class="btn btn-outline-primary mb-4" href="{{url_for('home',page=page_num)}}">{{page_num}}</a>
+
+{% endif %}
+{% else %}
+
+....
+{% endif %}
+{% endfor %}
+</div>
+
+
+
+{% endblock %}

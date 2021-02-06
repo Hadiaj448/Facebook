@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+
+
+   
+  <div class="w3-content">
+      <div class="w3-container w3-card w3-white w3-round w3-margin "style="width: 100%"><br>
+        <img src="{{url_for('static',filename='profile/'+post.author.image)}}" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+        <span class="w3-right w3-opacity">{{post.date.strftime('%Y-%m-%d')}}</span>
+          
+        <h3>{{post.author.username}}</h3><br>
+         <div class="w3-content">
+            {% if post.author==current_user %}
+            <a class="btn btn-secondary btn-sm m-1" href="{{url_for('edit_post',post_id=post.id)}}">Edit</a>
+            <a class="btn btn-danger btn-sm m-1" href="{{url_for('delete_post',post_id=post.id)}}">Delete</a>
+        {% endif %}
+          </div> 
+        <hr class="w3-clear">
+        <h3>{{post.title}}</h3>
+        <img src="{{url_for('static',filename='profile/'+post.image1)}}" style="width:100%" class="w3-margin-bottom">
+        <p>{{post.content}}</p>
+      </div> 
+
+    
+  
+
+
+{% endblock %}
